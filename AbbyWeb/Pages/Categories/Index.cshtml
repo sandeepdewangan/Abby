@@ -1,0 +1,35 @@
+﻿@page
+@model AbbyWeb.Pages.Categories.IndexModel
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h2 class="text-primary">Category List</h2>
+        </div>
+        <div class="col-6">
+
+        </div>
+    </div>
+
+    <br/>
+
+    <table class="table border-1">
+        <thead>
+            <tr>
+                <th width="10%">Category Id</th>
+                <th width="50%">Name</th>
+                <th width="10%">Display Order</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var cat in Model.Categories)
+            {
+                <tr>
+                    <td>@cat.Id</td>
+                    <td>@cat.Name</td>
+                    <td>@cat.DisplayOrder</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
