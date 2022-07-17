@@ -11,10 +11,12 @@
         <div class="mb-3">
             <label asp-for="Category.Name"></label>
             <input asp-for="@Model.Category.Name" />
+            <span asp-validation-for="Category.Name" class="alert-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="Category.DisplayOrder"></label>
             <input asp-for="@Model.Category.DisplayOrder" />
+            <span asp-validation-for="Category.DisplayOrder" class="alert-danger"></span>
         </div>
 
         <button type="submit" class="btn btn-primary">Create</button>
