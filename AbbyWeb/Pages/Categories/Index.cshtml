@@ -19,6 +19,7 @@
                 <th width="10%">Category Id</th>
                 <th width="50%">Name</th>
                 <th width="10%">Display Order</th>
+                <th width="10%">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -28,6 +29,10 @@
                     <td>@cat.Id</td>
                     <td>@cat.Name</td>
                     <td>@cat.DisplayOrder</td>
+                    <td>
+                        <a asp-page="Edit" asp-route-Id="@cat.Id" class="btn btn-info">Edit</a>
+                        <a asp-page="Delete" asp-route-Id="@cat.Id" class="btn btn-danger">Delete</a>
+                    </td>
                 </tr>
             }
         </tbody>
