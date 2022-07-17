@@ -1,6 +1,14 @@
 ﻿@page
 @model AbbyWeb.Pages.Categories.IndexModel
 
+
+@if (TempData["success"] != null)
+{
+    <div class="alert alert-success" id="success-alert">
+        @TempData["success"]
+    </div>
+}
+
 <div class="container">
     <div class="row">
         <div class="col-6">
@@ -11,7 +19,7 @@
         </div>
     </div>
 
-    <br/>
+    <br />
 
     <table class="table border-1">
         <thead>
@@ -23,7 +31,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach(var cat in Model.Categories)
+            @foreach (var cat in Model.Categories)
             {
                 <tr>
                     <td>@cat.Id</td>
