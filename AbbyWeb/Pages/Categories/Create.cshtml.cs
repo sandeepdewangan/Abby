@@ -23,9 +23,10 @@ namespace AbbyWeb.Pages.Categories
         public async Task<IActionResult> OnPost()
         {
             // Custom Model Validation - <div asp-validation-summary="All"></div>
+            // Key changes
             if (Category.Name == Category.DisplayOrder.ToString())
             {
-                ModelState.AddModelError(String.Empty, "The display order cannot exactly match the Name.");
+                ModelState.AddModelError("Category.Name", "The display order cannot exactly match the Name.");
             }
 
             if (ModelState.IsValid)
