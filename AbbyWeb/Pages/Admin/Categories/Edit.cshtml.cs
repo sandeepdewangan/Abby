@@ -3,27 +3,26 @@ using AbbyWeb.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace AbbyWeb.Pages.Categories
+namespace AbbyWeb.Pages.Admin.Categories
 {
-    public class CreateModel : PageModel
+    public class EditModel : PageModel
     {
         [BindProperty]
         public Category Category { get; set; }
         public ApplicationDbContext _db { get; set; }
 
-        public CreateModel(ApplicationDbContext db)
+        public EditModel(ApplicationDbContext db)
         {
             _db = db;
         }
 
-        public void OnGet()
+        public void OnGet(int Id)
         {
+            Category = _db.Category.Find(Id);
         }
 
         public async Task<IActionResult> OnPost()
         {
-            // Custom Model Validation - <div asp-validation-summary="All"></div>
-            // Key changes
             if (Category.Name == Category.DisplayOrder.ToString())
             {
                 ModelState.AddModelError("Category.Name", "The display order cannot exactly match the Name.");
@@ -31,10 +30,10 @@ namespace AbbyWeb.Pages.Categories
 
             if (ModelState.IsValid)
             {
-                await _db.Category.AddAsync(Category);
+                _db.Category.Update(Category);
                 await _db.SaveChangesAsync();
 
-                TempData["success"] = "Category crreated successfully.";
+                TempData["success"] = "Category updated successfully.";
 
                 return RedirectToPage("Index");
             }
